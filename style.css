@@ -42,8 +42,8 @@ body {
     overflow-y: auto;
 }
 
-/* BACKGROUND VIDEO (FIXED TO VIEWPORT) */
-#bg-video {
+/* BACKGROUND CANVAS (FIXED TO VIEWPORT) */
+#bg-canvas {
     position: fixed;
     top: 0;
     left: 0;

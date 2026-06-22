@@ -34,59 +34,78 @@ document.addEventListener('DOMContentLoaded', () => {
         serviceItems[0].classList.add('active');
     }
 
-    // 3. Scroll-Driven Background Video Scrubbing (Using Window Scroll)
-    const video = document.getElementById('bg-video');
+    // 3. Canvas Image-Sequence Scroll Scrubbing
+    const canvas = document.getElementById('bg-canvas');
     const scrollIndicator = document.querySelector('.scroll-indicator');
+    
+    if (canvas) {
+        const context = canvas.getContext('2d');
+        const frameCount = 120;
+        const images = [];
 
-    // Ensure video is paused and ready for manual scrubbing
-    video.pause();
+        // Set canvas coordinate dimensions matching the image aspect ratio
+        canvas.width = 540;
+        canvas.height = 1200;
 
-    const updateVideoPlayhead = () => {
-        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+        // Generate file paths
+        const currentFrame = index => (
+            `frames/frame_${index.toString().padStart(3, '0')}.jpg`
+        );
 
-        // Toggle scroll indicator visibility based on scroll position
-        if (scrollTop > 50) {
-            scrollIndicator.style.opacity = '0';
-            scrollIndicator.style.pointerEvents = 'none';
-        } else {
-            scrollIndicator.style.opacity = '0.8';
-            scrollIndicator.style.pointerEvents = 'auto';
-        }
+        // Preload images
+        let loadedCount = 0;
+        const preloadImages = () => {
+            for (let i = 1; i <= frameCount; i++) {
+                const img = new Image();
+                img.onload = () => {
+                    loadedCount++;
+                    // Draw first frame as soon as it loads to prevent blank screen
+                    if (i === 1) {
+                        drawFrame(0);
+                    }
+                };
+                img.src = currentFrame(i);
+                images.push(img);
+            }
+        };
 
-        // Calculate scroll fraction and update video currentTime instantly
-        if (video.duration) {
+        // Render current image onto canvas
+        const drawFrame = index => {
+            const img = images[index];
+            if (img && img.complete) {
+                context.clearRect(0, 0, canvas.width, canvas.height);
+                context.drawImage(img, 0, 0, canvas.width, canvas.height);
+            }
+        };
+
+        // Scroll listener mapping scroll depth directly to frame index
+        const updatePlayhead = () => {
+            const scrollTop = window.scrollY || document.documentElement.scrollTop;
+
+            // Toggle scroll indicator
+            if (scrollTop > 50) {
+                scrollIndicator.style.opacity = '0';
+                scrollIndicator.style.pointerEvents = 'none';
+            } else {
+                scrollIndicator.style.opacity = '0.8';
+                scrollIndicator.style.pointerEvents = 'auto';
+            }
+
             const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
             if (maxScroll > 0) {
                 const scrollFraction = scrollTop / maxScroll;
-                const targetTime = video.duration * scrollFraction;
-                video.currentTime = Math.max(0, Math.min(video.duration - 0.01, targetTime));
+                const frameIndex = Math.min(
+                    frameCount - 1,
+                    Math.max(0, Math.floor(scrollFraction * frameCount))
+                );
+                requestAnimationFrame(() => drawFrame(frameIndex));
             }
-        }
-    };
+        };
 
-    // Listen to standard window scroll events
-    window.addEventListener('scroll', updateVideoPlayhead);
+        window.addEventListener('scroll', updatePlayhead);
+        window.addEventListener('resize', updatePlayhead);
 
-    // Initialize once video metadata has loaded
-    if (video.readyState >= 1) {
-        updateVideoPlayhead();
-    } else {
-        video.addEventListener('loadedmetadata', updateVideoPlayhead);
+        // Start preloading
+        preloadImages();
     }
-
-    // Handle fallbacks for mobile browsers locking video loads until interaction
-    const initVideoOnInteraction = () => {
-        if (video.paused) {
-            video.play().then(() => {
-                video.pause();
-            }).catch(err => {
-                console.log("Video playback pre-warm rejected: ", err);
-            });
-        }
-        document.removeEventListener('touchstart', initVideoOnInteraction);
-        document.removeEventListener('click', initVideoOnInteraction);
-    };
-
-    document.addEventListener('touchstart', initVideoOnInteraction);
-    document.addEventListener('click', initVideoOnInteraction);
 });
