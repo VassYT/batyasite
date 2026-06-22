@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Generate file paths
         const currentFrame = index => (
-            `frames/frame_${index.toString().padStart(3, '0')}.jpg`
+            `frames/frame_${index.toString().padStart(3, '0')}.webp`
         );
 
         // Render current image (or nearest loaded fallback) onto canvas
