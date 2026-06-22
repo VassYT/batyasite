@@ -615,3 +615,71 @@ footer {
     color: var(--text-muted);
     font-size: 10px;
 }
+
+/* FLOATING WHATSAPP CTA */
+.floating-cta {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background-color: var(--whatsapp-green);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4), 
+                0 0 0 0 rgba(37, 211, 102, 0.4);
+    z-index: 99;
+    opacity: 0;
+    transform: scale(0);
+    transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+                transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    animation: pulse-green 2s infinite;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.floating-cta.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.floating-cta:active {
+    transform: scale(0.92);
+}
+
+.floating-cta-icon {
+    width: 28px;
+    height: 28px;
+}
+
+@keyframes pulse-green {
+    0% {
+        box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4), 
+                    0 0 0 0 rgba(37, 211, 102, 0.7);
+    }
+    70% {
+        box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4), 
+                    0 0 0 12px rgba(37, 211, 102, 0);
+    }
+    100% {
+        box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4), 
+                    0 0 0 0 rgba(37, 211, 102, 0);
+    }
+}
+
+/* SCROLL REVEAL ANIMATION */
+.reveal-element {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
+                transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-element.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+

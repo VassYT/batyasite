@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const waUrl = `https://wa.me/${waNumber}?text=${waText}`;
     
     if (qrImage) {
-        // Use qrserver.com API to generate WhatsApp link QR code
         qrImage.src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(waUrl)}`;
     }
 
@@ -34,7 +33,10 @@ document.addEventListener('DOMContentLoaded', () => {
         serviceItems[0].classList.add('active');
     }
 
-    // 3. Canvas Image-Sequence Scroll Scrubbing
+    // 3. Floating WhatsApp CTA visibility toggle
+    const floatingCta = document.getElementById('floating-whatsapp');
+
+    // 4. Canvas Image-Sequence Scroll Scrubbing (Optimized Progressive Load)
     const canvas = document.getElementById('bg-canvas');
     const scrollIndicator = document.querySelector('.scroll-indicator');
     
@@ -52,29 +54,24 @@ document.addEventListener('DOMContentLoaded', () => {
             `frames/frame_${index.toString().padStart(3, '0')}.jpg`
         );
 
-        // Preload images
-        let loadedCount = 0;
-        const preloadImages = () => {
-            for (let i = 1; i <= frameCount; i++) {
-                const img = new Image();
-                img.onload = () => {
-                    loadedCount++;
-                    // Draw first frame as soon as it loads to prevent blank screen
-                    if (i === 1) {
-                        drawFrame(0);
-                    }
-                };
-                img.src = currentFrame(i);
-                images.push(img);
-            }
-        };
-
-        // Render current image onto canvas
+        // Render current image (or nearest loaded fallback) onto canvas
         const drawFrame = index => {
-            const img = images[index];
-            if (img && img.complete) {
+            let imgToDraw = images[index];
+            
+            // Fallback logic: if the target frame isn't loaded yet, find the closest loaded one
+            if (!imgToDraw || !imgToDraw.complete) {
+                for (let i = index; i >= 0; i--) {
+                    if (images[i] && images[i].complete) {
+                        imgToDraw = images[i];
+                        break;
+                    }
+                }
+            }
+
+            // Draw
+            if (imgToDraw && imgToDraw.complete) {
                 context.clearRect(0, 0, canvas.width, canvas.height);
-                context.drawImage(img, 0, 0, canvas.width, canvas.height);
+                context.drawImage(imgToDraw, 0, 0, canvas.width, canvas.height);
             }
         };
 
@@ -91,6 +88,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 scrollIndicator.style.pointerEvents = 'auto';
             }
 
+            // Toggle floating WhatsApp CTA visibility
+            if (floatingCta) {
+                if (scrollTop > 300) {
+                    floatingCta.classList.add('visible');
+                } else {
+                    floatingCta.classList.remove('visible');
+                }
+            }
+
             const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
             if (maxScroll > 0) {
                 const scrollFraction = scrollTop / maxScroll;
@@ -102,10 +108,45 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         };
 
+        // Preload first frame immediately to make site background display instantly
+        const firstFrameImg = new Image();
+        firstFrameImg.onload = () => {
+            images[0] = firstFrameImg;
+            drawFrame(0);
+            
+            // Load the remaining 119 frames asynchronously in the background
+            preloadRemainingFrames();
+        };
+        firstFrameImg.src = currentFrame(1);
+
+        const preloadRemainingFrames = () => {
+            for (let i = 2; i <= frameCount; i++) {
+                const img = new Image();
+                img.src = currentFrame(i);
+                images[i - 1] = img; // Offset by 1 since array is 0-indexed
+            }
+        };
+
         window.addEventListener('scroll', updatePlayhead);
         window.addEventListener('resize', updatePlayhead);
-
-        // Start preloading
-        preloadImages();
     }
+
+    // 5. Scroll Reveal Animation (Subtle entry animation for cards)
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+                // Unobserve once revealed to keep scrolling performant
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.05,
+        rootMargin: '0px 0px -40px 0px' // triggers slightly before entering viewport
+    });
+
+    document.querySelectorAll('.glass-card, .area-card').forEach(card => {
+        card.classList.add('reveal-element');
+        revealObserver.observe(card);
+    });
 });
