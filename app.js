@@ -46,8 +46,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const images = [];
 
         // Set canvas coordinate dimensions matching the image aspect ratio
-        canvas.width = 540;
-        canvas.height = 1200;
+        canvas.width = 1080;
+        canvas.height = 2400;
 
         // Generate file paths
         const currentFrame = index => (
