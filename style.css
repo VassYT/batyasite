@@ -52,6 +52,7 @@ body {
     object-fit: cover;
     z-index: 1;
     pointer-events: none;
+    filter: brightness(1.2) saturate(1.2) contrast(1.2);
 }
 
 #video-tint {
@@ -287,6 +288,8 @@ body {
     cursor: pointer;
     overflow: hidden;
     padding: 16px 20px;
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
 }
 
 .service-header {
