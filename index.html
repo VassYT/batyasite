@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Handwerker-Service | Schnell. Präzise. Sauber.</title>
+    <meta name="description" content="Möbelmontage, Malerarbeiten, Küchenmontage und Bodenverlegung in Mülheim, Bochum, Essen und Umgebung. Ihr zuverlässiger Partner für Renovierung und Montage.">
+    <!-- Google Fonts: Outfit (modern headers) and Inter (body text) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Fixed Background Video -->
+    <video id="bg-video" playsinline muted loop preload="auto">
+        <source src="bg.mp4" type="video/mp4">
+        Ihr Browser unterstützt das Video-Format nicht.
+    </video>
+    
+    <div id="video-tint"></div>
+
+    <!-- Scrollable Content -->
+    <main id="main-content">
+        
+        <!-- HERO SECTION -->
+        <section class="hero-section" id="hero">
+            <div class="logo-badge">
+                <svg class="badge-tool" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6-9.6 9.6a1.5 1.5 0 0 1-2.1-2.1l9.6-9.6-1.6-1.6a1 1 0 0 0-1.4 0L9.6 7.2l-4.9-4.9a1.5 1.5 0 0 0-2.1 2.1l4.9 4.9L6.3 10.5a1 1 0 0 0 0 1.4l1.6 1.6-4.9 4.9a3 3 0 0 0 4.2 4.2l4.9-4.9 1.6 1.6a1 1 0 0 0 1.4 0l1.2-1.2 4.9 4.9a1.5 1.5 0 0 0 2.1-2.1l-4.9-4.9 1.2-1.2a1 1 0 0 0 0-1.4l-1.6-1.6 4.9-4.9a3 3 0 0 0-4.2-4.2L14.7 6.3z" fill="currentColor"/>
+                </svg>
+                <span>MEISTERHANDWERKER</span>
+            </div>
+            
+            <h1 class="hero-title">HANDWERKER<br><span>SERVICE</span></h1>
+            <p class="hero-tagline">Schnell. Präzise. Sauber.</p>
+
+            <div class="cta-card glass-card">
+                <a href="tel:+4916091903033" class="btn btn-call">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="btn-icon"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    Jetzt anrufen
+                </a>
+                <a href="https://wa.me/4916091903033" target="_blank" rel="noopener" class="btn btn-whatsapp">
+                    <svg viewBox="0 0 24 24" fill="currentColor" class="btn-icon"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.457L0 24zm5.835-3.321c1.649.979 3.259 1.499 4.85 1.501 5.485.002 9.953-4.464 9.956-9.953.002-2.661-1.033-5.163-2.91-7.04C15.86 3.31 13.36 2.27 10.7 2.27c-5.491 0-9.959 4.468-9.962 9.958-.002 1.792.484 3.542 1.411 5.086L1.144 21.84l4.748-1.161zm12.518-7.391c-.328-.164-1.936-.955-2.235-1.064-.299-.11-.517-.164-.736.164-.218.328-.847 1.064-1.038 1.282-.191.218-.383.245-.71.082-.328-.164-1.383-.509-2.637-1.627-.975-.87-1.633-1.946-1.824-2.273-.192-.328-.021-.505.143-.668.147-.146.328-.382.492-.573.164-.191.218-.328.328-.546.11-.218.055-.41-.027-.573-.082-.164-.736-1.774-1.009-2.43-.267-.639-.538-.553-.736-.563-.19-.01-.409-.012-.628-.012-.218 0-.573.082-.873.409-.3.328-1.147 1.119-1.147 2.729 0 1.61 1.174 3.166 1.338 3.385.164.218 2.311 3.528 5.597 4.946.781.338 1.39.54 1.866.691.785.25 1.5.214 2.066.13.629-.094 1.936-.791 2.209-1.556.273-.764.273-1.419.191-1.556-.08-.137-.299-.219-.628-.383z" fill="currentColor"/></svg>
+                    WhatsApp Chat
+                </a>
+            </div>
+
+            <div class="scroll-indicator">
+                <p>Angebot ansehen</p>
+                <div class="arrow-container">
+                    <span class="arrow-down"></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- SERVICES SECTION -->
+        <section class="section" id="services">
+            <h2 class="section-title">Unser Leistungsangebot</h2>
+            
+            <div class="services-list">
+                <!-- Service 1: Möbelmontage -->
+                <div class="service-item glass-card" data-index="1">
+                    <div class="service-header">
+                        <div class="service-icon-box">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="service-icon">
+                                <path d="M4 18v3M20 18v3M3 14h18M4 6h16a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1z"/>
+                            </svg>
+                        </div>
+                        <div class="service-title-container">
+                            <span class="service-number">01</span>
+                            <h3>Möbelmontage</h3>
+                        </div>
+                        <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </div>
+                    <div class="service-body">
+                        <p>Aufbau aller Möbelstücke, Schränke, Regale, Betten und Wohnwände. Schnell, präzise und fachgerecht.</p>
+                        <ul class="service-details">
+                            <li>Aufbau von Kommoden & Kleiderschränken</li>
+                            <li>Montage von Regalsystemen & Wandboards</li>
+                            <li>Bettgestelle & Polstermöbel</li>
+                            <li>Sichere Wandverankerung</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Service 2: Anstreichen & Tapezieren -->
+                <div class="service-item glass-card" data-index="2">
+                    <div class="service-header">
+                        <div class="service-icon-box">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="service-icon">
+                                <path d="M6 3h12a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zM4 9v4a2 2 0 0 0 2 2h4M10 15v6M8 21h4"/>
+                            </svg>
+                        </div>
+                        <div class="service-title-container">
+                            <span class="service-number">02</span>
+                            <h3>Anstreichen & Tapezieren</h3>
+                        </div>
+                        <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </div>
+                    <div class="service-body">
+                        <p>Sauberer Wand- und Deckenanstrich sowie fachgerechte Tapezierarbeiten für ein frisches Zuhause.</p>
+                        <ul class="service-details">
+                            <li>Wand- und Deckenanstrich</li>
+                            <li>Spachtel- & Ausbesserungsarbeiten</li>
+                            <li>Tapezieren (Raufaser, Vlies, Muster)</li>
+                            <li>Abklebe- und Abdeckarbeiten inklusive</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Service 3: Küchenmontage -->
+                <div class="service-item glass-card" data-index="3">
+                    <div class="service-header">
+                        <div class="service-icon-box">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="service-icon">
+                                <path d="M6 18H18M6 6H18M3 2v20a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1zM9 12h.01M15 12h.01M9 15h.01M15 15h.01"/>
+                            </svg>
+                        </div>
+                        <div class="service-title-container">
+                            <span class="service-number">03</span>
+                            <h3>Küchenmontage</h3>
+                        </div>
+                        <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </div>
+                    <div class="service-body">
+                        <p>Kompletter Aufbau Ihrer neuen Einbauküche inklusive aller Zuschnitte und Geräteanschlüsse.</p>
+                        <ul class="service-details">
+                            <li>Aufbau von Küchenzeilen und Oberschränken</li>
+                            <li>Millimetergenauer Zuschnitt von Arbeitsplatten</li>
+                            <li>Einbau und Anschluss von Spüle & Armaturen</li>
+                            <li>Integration von Kochfeld, Ofen & Kühlschrank</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Service 4: Innentüren & Zargen -->
+                <div class="service-item glass-card" data-index="4">
+                    <div class="service-header">
+                        <div class="service-icon-box">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="service-icon">
+                                <path d="M3 3h18v18H3V3zM9 3v18M13 11h2M13 13h2M15 12h.01"/>
+                            </svg>
+                        </div>
+                        <div class="service-title-container">
+                            <span class="service-number">04</span>
+                            <h3>Innentüren & Zargen</h3>
+                        </div>
+                        <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </div>
+                    <div class="service-body">
+                        <p>Laser-präzise Montage von Türzargen und Innentüren mit professionellem 2K-Schaum.</p>
+                        <ul class="service-details">
+                            <li>Einbau von Holzzargen & Stiltüren</li>
+                            <li>Präzise Ausrichtung mittels Linienlaser</li>
+                            <li>Stabile Verankerung mit 2K-Zargenschaum</li>
+                            <li>Kürzen von Türblättern bei Bedarf</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Service 5: Laminat & Bodenverlegung -->
+                <div class="service-item glass-card" data-index="5">
+                    <div class="service-header">
+                        <div class="service-icon-box">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="service-icon">
+                                <path d="M12 2v20M5 12h14M2 5h20M2 19h20M2 9h20M2 15h20"/>
+                            </svg>
+                        </div>
+                        <div class="service-title-container">
+                            <span class="service-number">05</span>
+                            <h3>Laminat & Bodenverlegung</h3>
+                        </div>
+                        <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </div>
+                    <div class="service-body">
+                        <p>Fachgerechte Verlegung moderner Bodenbeläge inklusive Untergrundvorbereitung und Leisten.</p>
+                        <ul class="service-details">
+                            <li>Laminat, Klick-Vinyl & Linoleum</li>
+                            <li>Verlegung von Trittschalldämmung</li>
+                            <li>Montage von Sockelleisten & Übergangsprofilen</li>
+                            <li>Türkanten-Anpassungen</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BENEFITS SECTION -->
+        <section class="section" id="benefits">
+            <h2 class="section-title">Warum wir?</h2>
+            
+            <div class="benefit-card glass-card">
+                <div class="benefit-item">
+                    <div class="benefit-icon-box">
+                        <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                    </div>
+                    <div class="benefit-text">
+                        <h4>Transparente Festpreise</h4>
+                        <p>Keine bösen Überraschungen oder versteckte Kosten. Sie erhalten ein klares, faires Angebot vor Arbeitsbeginn.</p>
+                    </div>
+                </div>
+                
+                <div class="benefit-item">
+                    <div class="benefit-icon-box">
+                        <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                    </div>
+                    <div class="benefit-text">
+                        <h4>Pünktlichkeit & Sauberkeit</h4>
+                        <p>Wir erscheinen pünktlich zum vereinbarten Termin und hinterlassen unsere Arbeitsstelle besenrein und ordentlich.</p>
+                    </div>
+                </div>
+
+                <div class="benefit-item">
+                    <div class="benefit-icon-box">
+                        <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                    </div>
+                    <div class="benefit-text">
+                        <h4>Kostenlose Beratung</h4>
+                        <p>Wir besprechen Ihr Vorhaben direkt am Telefon oder via WhatsApp und erstellen Ihnen ein unverbindliches Angebot.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT & SERVICE AREA SECTION -->
+        <section class="section" id="contact">
+            <h2 class="section-title">Einsatzgebiete & Kontakt</h2>
+            
+            <div class="area-card glass-card">
+                <div class="area-header">
+                    <div class="area-icon-box">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="area-icon">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h4>Bis zu 35 km Radius</h4>
+                        <p class="area-subtitle">Wir sind schnell bei Ihnen vor Ort</p>
+                    </div>
+                </div>
+                
+                <p class="area-text">
+                    <strong>Haupt-Einsatzorte:</strong><br>
+                    Mülheim an der Ruhr, Bochum, Essen, Duisburg, Oberhausen, Ratingen, Düsseldorf, Moers, Velbert u.v.m.
+                </p>
+            </div>
+
+            <div class="contact-card glass-card">
+                <h3>Jetzt kostenloses Angebot anfordern!</h3>
+                <p class="contact-desc">Schreiben Sie uns ganz einfach auf WhatsApp oder rufen Sie uns direkt an.</p>
+                
+                <div class="buttons-stack">
+                    <a href="https://wa.me/4916091903033" target="_blank" rel="noopener" class="btn btn-whatsapp-large">
+                        <svg viewBox="0 0 24 24" fill="currentColor" class="wa-large-icon"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.457L0 24zm5.835-3.321c1.649.979 3.259 1.499 4.85 1.501 5.485.002 9.953-4.464 9.956-9.953.002-2.661-1.033-5.163-2.91-7.04C15.86 3.31 13.36 2.27 10.7 2.27c-5.491 0-9.959 4.468-9.962 9.958-.002 1.792.484 3.542 1.411 5.086L1.144 21.84l4.748-1.161zm12.518-7.391c-.328-.164-1.936-.955-2.235-1.064-.299-.11-.517-.164-.736.164-.218.328-.847 1.064-1.038 1.282-.191.218-.383.245-.71.082-.328-.164-1.383-.509-2.637-1.627-.975-.87-1.633-1.946-1.824-2.273-.192-.328-.021-.505.143-.668.147-.146.328-.382.492-.573.164-.191.218-.328.328-.546.11-.218.055-.41-.027-.573-.082-.164-.736-1.774-1.009-2.43-.267-.639-.538-.553-.736-.563-.19-.01-.409-.012-.628-.012-.218 0-.573.082-.873.409-.3.328-1.147 1.119-1.147 2.729 0 1.61 1.174 3.166 1.338 3.385.164.218 2.311 3.528 5.597 4.946.781.338 1.39.54 1.866.691.785.25 1.5.214 2.066.13.629-.094 1.936-.791 2.209-1.556.273-.764.273-1.419.191-1.556-.08-.137-.299-.219-.628-.383z" fill="currentColor"/></svg>
+                        Angebot über WhatsApp anfordern
+                    </a>
+                    
+                    <a href="tel:+4916091903033" class="btn btn-call-large">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="wa-large-icon"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        Jetzt direkt anrufen
+                    </a>
+                </div>
+
+                <!-- QR Code Area for Desktop Users -->
+                <div class="qr-code-section">
+                    <div class="qr-code-box">
+                        <img id="whatsapp-qr" src="" alt="WhatsApp QR Code">
+                    </div>
+                    <p class="qr-desc">Scannen, um WhatsApp-Chat zu starten</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer>
+            <p class="footer-phone">&copy; 2026 Handwerker-Service</p>
+            <div class="footer-links">
+                <a href="#hero" class="footer-link">Impressum</a>
+                <span class="dot">&bull;</span>
+                <a href="#hero" class="footer-link">Datenschutz</a>
+            </div>
+        </footer>
+
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
