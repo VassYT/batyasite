@@ -149,4 +149,44 @@ document.addEventListener('DOMContentLoaded', () => {
         card.classList.add('reveal-element');
         revealObserver.observe(card);
     });
+
+    // 6. Legal Sections Accordion (Impressum & Datenschutz)
+    const legalItems = document.querySelectorAll('.legal-item');
+    legalItems.forEach(item => {
+        const header = item.querySelector('.legal-header');
+        header.addEventListener('click', () => {
+            const isActive = item.classList.contains('active');
+            
+            // Close all legal items
+            legalItems.forEach(otherItem => {
+                otherItem.classList.remove('active');
+            });
+            
+            // Toggle current item
+            if (!isActive) {
+                item.classList.add('active');
+            }
+        });
+    });
+
+    // 7. Auto-open legal section when navigating via hash link (footer)
+    const openLegalFromHash = () => {
+        const hash = window.location.hash;
+        if (hash === '#impressum' || hash === '#datenschutz') {
+            const target = document.querySelector(hash);
+            if (target && target.classList.contains('legal-item')) {
+                // Close all, then open target
+                legalItems.forEach(item => item.classList.remove('active'));
+                target.classList.add('active');
+                // Smooth scroll to the element
+                setTimeout(() => {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 100);
+            }
+        }
+    };
+
+    // Run on page load and on hash change
+    openLegalFromHash();
+    window.addEventListener('hashchange', openLegalFromHash);
 });

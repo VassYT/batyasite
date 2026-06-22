@@ -1,3 +1,75 @@
+/* LOCAL FONT LOADING — DSGVO compliant (no data sent to Google servers) */
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: url('fonts/inter-300.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('fonts/inter-400.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url('fonts/inter-500.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url('fonts/inter-600.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('fonts/inter-700.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('fonts/outfit-400.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url('fonts/outfit-500.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url('fonts/outfit-600.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('fonts/outfit-700.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 800;
+    font-display: swap;
+    src: url('fonts/outfit-800.ttf') format('truetype');
+}
+
 /* Modern CSS Design System for Handwerker-Service (Single Page, Fullscreen) */
 
 :root {
@@ -681,5 +753,118 @@ footer {
 .reveal-element.revealed {
     opacity: 1;
     transform: translateY(0);
+}
+
+/* LEGAL SECTIONS (Impressum & Datenschutz) */
+.legal-item {
+    cursor: pointer;
+    overflow: hidden;
+    padding: 16px 20px;
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+    margin-bottom: 14px;
+}
+
+.legal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.legal-title-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.legal-icon {
+    width: 22px;
+    height: 22px;
+    color: var(--primary-blue);
+    flex-shrink: 0;
+}
+
+.legal-header h3 {
+    font-family: var(--font-header);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+.legal-body {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.3s ease;
+}
+
+.legal-content {
+    padding-top: 16px;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    margin-top: 14px;
+}
+
+.legal-content p {
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+}
+
+.legal-content p strong {
+    color: var(--text-dark);
+    font-size: 13.5px;
+    display: block;
+    margin-top: 16px;
+    margin-bottom: 4px;
+}
+
+.legal-content p:first-child strong {
+    margin-top: 0;
+}
+
+.legal-content p em {
+    color: var(--text-dark);
+    font-style: italic;
+}
+
+.legal-list {
+    padding-left: 20px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.legal-list li {
+    font-size: 12.5px;
+    color: var(--text-dark);
+    font-weight: 400;
+    line-height: 1.5;
+    list-style-type: disc;
+}
+
+.legal-note {
+    font-size: 12px !important;
+    color: var(--text-muted);
+    font-style: italic;
+    margin-top: 16px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* Active legal accordion state */
+.legal-item.active {
+    border-color: rgba(45, 104, 150, 0.3);
+}
+
+.legal-item.active .chevron-icon {
+    transform: rotate(180deg);
+}
+
+.legal-item.active .legal-body {
+    max-height: 2000px;
+    opacity: 1;
 }
 
